@@ -1,0 +1,19 @@
+@using Tamagotchi.Models;
+
+<h1>Your pet</h1>
+
+@Model.Hungry
+@Model.Tired
+@Model.Bored
+
+<form action="/play/feed" method="post">
+  <button>Feed</button>
+</form>
+
+<form action="/play/bedtime" method="post">
+  <button>Bedtime</button>
+</form>
+
+<form action="/play/kickball" method="post">
+  <button>Kickball</button>
+</form>
