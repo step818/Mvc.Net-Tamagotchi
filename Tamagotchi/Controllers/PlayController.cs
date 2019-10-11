@@ -10,15 +10,25 @@ namespace Tamagotchi.Controllers
     [HttpGet("/play")]
     public ActionResult Index()
     {
-      Pet newPet = new Pet();
-      return View(newPet);
+      List<Pet> allPets = Pet.GetAll();
+      return View(allPets);
     }
-    [HttpPost("/play/feed")]
-    public ActionResult Feed(Pet newPet)
+    [HttpGet("/play/new")]
+    public ActionResult CreatePet()
     {
-      newPet.Feed();
-      Console.WriteLine(newPet.Hungry);
-      return View("Index", newPet);
+      return View();
+    }
+    [HttpPost("/play")]
+    public ActionResult Create(string name)
+    {
+      Pet newPet = new Pet(name);
+      return RedirectToAction("Index");
+    }
+    [HttpPost("/items/delete")]
+    public ActionResult DeleteAll()
+    {
+      Pet.ClearAll();
+      return View();
     }
   }
 }

@@ -2,9 +2,17 @@
 
 <h1>Your pet</h1>
 
+@Model.Name
 @Model.Hungry
 @Model.Tired
 @Model.Bored
+<ul>
+  @foreach (Pet pet in Model)
+  {
+    <li>@pet.Name</li>
+  }
+</ul>
+<a href="items/new">Add new pet</a>
 
 <form action="/play/feed" method="post">
   <button type="submit">Feed</button>
