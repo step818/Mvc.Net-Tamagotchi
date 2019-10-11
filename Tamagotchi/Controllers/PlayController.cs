@@ -13,22 +13,24 @@ namespace Tamagotchi.Controllers
       List<Pet> allPets = Pet.GetAll();
       return View(allPets);
     }
-    [HttpGet("/play/new")]
-    public ActionResult CreatePet()
-    {
-      return View();
-    }
+    
     [HttpPost("/play")]
     public ActionResult Create(string name)
     {
       Pet newPet = new Pet(name);
       return RedirectToAction("Index");
     }
-    [HttpPost("/items/delete")]
+    [HttpPost("/play/delete")]
     public ActionResult DeleteAll()
     {
       Pet.ClearAll();
       return View();
+    }
+    [HttpPost("/play/feed")]
+    public ActionResult Update(Pet allPets)
+    {
+      allPets.Feed();
+      return RedirectToAction("Index");
     }
   }
 }

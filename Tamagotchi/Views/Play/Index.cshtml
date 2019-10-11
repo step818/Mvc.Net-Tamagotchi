@@ -2,17 +2,15 @@
 
 <h1>Your pet</h1>
 
-@Model.Name
-@Model.Hungry
-@Model.Tired
-@Model.Bored
+
 <ul>
   @foreach (Pet pet in Model)
   {
+    <li>@pet.Id</li>
     <li>@pet.Name</li>
+    <li>@pet.Hungry</li>
   }
 </ul>
-<a href="items/new">Add new pet</a>
 
 <form action="/play/feed" method="post">
   <button type="submit">Feed</button>
@@ -24,4 +22,14 @@
 
 <form action="/play" method="post">
   <button type="submit">Kickball</button>
+</form>
+
+<form action="/play" method="post">
+  <label for="name">Adopt a new pet. Give it a name:</label>
+  <input id="name" name="name" type="text">
+  <button type="submit">Adopt</button>
+</form>
+
+<form action="/play/delete" method="post">
+  <button type="submit">Clear All</button>
 </form>
