@@ -16,20 +16,18 @@ namespace Tamagotchi.Models
       Tired = 0;
       Bored = 0;
     }
-    public int Feed(int food)
+    public int Feed()
     {
-      Food = -food;
-      return Food;
+      Hungry = Hungry + 1;
+      return Hungry;
     }
-    public int Bedtime(int sleep)
+    public int Bedtime()
     {
-      Sleep = -sleep;
-      return Sleep;
+      return Tired--;
     }
-    public int Kickball(int play)
+    public int Kickball()
     {
-      Play = -play;
-      return Play;
+      return Bored--;
     }
     public bool isDead()
     {
@@ -50,6 +48,6 @@ namespace Tamagotchi.Models
         return false;
       }
     }
-    
+
   }
 }

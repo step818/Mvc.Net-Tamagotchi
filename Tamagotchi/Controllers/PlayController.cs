@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Tamagotchi.Models;
+using System;
+using System.Collections.Generic;
 
 namespace Tamagotchi.Controllers
 {
@@ -12,22 +14,11 @@ namespace Tamagotchi.Controllers
       return View(newPet);
     }
     [HttpPost("/play/feed")]
-    public ActionResult Feed()
+    public ActionResult Feed(Pet newPet)
     {
       newPet.Feed();
-      return RedirectToAction("Index");
-    }
-    [HttpPost("/play/bedtime")]
-    public ActionResult Bedtime()
-    {
-      newPet.Bedtime();
-      return RedirectToAction("Index");
-    }
-    [HttpPost("/play/kickball")]
-    public ActionResult Kickball()
-    {
-      newPet.Kickball();
-      return RedirectToAction("Index");
+      Console.WriteLine(newPet.Hungry);
+      return View("Index", newPet);
     }
   }
 }
