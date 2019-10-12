@@ -26,11 +26,18 @@ namespace Tamagotchi.Controllers
       Pet.ClearAll();
       return View();
     }
-    [HttpPost("/play/feed")]
-    public ActionResult Update(Pet allPets)
+    [HttpGet("/play/{id}")]
+    public ActionResult Show(int id)
     {
-      allPets.Feed();
-      return RedirectToAction("Index");
+      Pet foundPet = Pet.Find(id);
+      return View(foundPet);
+    }
+    [HttpPost("/play/{id}/feed")]
+    public ActionResult Update(int Id)
+    {
+      Pet thisPet = Pet.Find(Id);
+      thisPet.Feed();
+      return RedirectToAction("Show");
     }
   }
 }

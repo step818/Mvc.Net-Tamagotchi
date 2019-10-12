@@ -7,14 +7,12 @@
   @foreach (Pet pet in Model)
   {
     <li>@pet.Id</li>
-    <li>@pet.Name</li>
+    <li><a href="/play/@pet.Id">@pet.Name</a></li>
     <li>@pet.Hungry</li>
   }
 </ul>
 
-<form action="/play/feed" method="post">
-  <button type="submit">Feed</button>
-</form>
+
 
 <form action="/play" method="post">
   <button type="submit">Bedtime</button>

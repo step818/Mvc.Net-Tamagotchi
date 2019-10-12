@@ -34,8 +34,15 @@ namespace Tamagotchi.Models
     }
     public int Feed()
     {
-      Hungry = Hungry + 1;
-      return Hungry;
+      if(Hungry != 100)
+      {
+        Hungry = Hungry + 1;
+        return Hungry;
+      }
+      else
+      {
+        return 0;
+      }
     }
     public int Bedtime()
     {
