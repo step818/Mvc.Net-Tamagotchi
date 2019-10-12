@@ -4,6 +4,12 @@
 <p>@Model.Tired</p>
 <p>@Model.Bored</p>
 
+@if(@Model.isDead())
+{
+  <h2>@Model.Name has died</h2> 
+
+}
+
 <form action="/play/@Model.Id/feed" method="post">
   <button type="submit">Feed</button>
 </form>
@@ -15,5 +21,6 @@
 <form action="/play/@Model.Id/kickball" method="post">
   <button type="submit">Play kickball</button>
 </form>
+
 
 <a href="/play">Go Back to Pets</a>

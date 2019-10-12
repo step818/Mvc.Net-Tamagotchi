@@ -3,13 +3,11 @@
 <h1>Your pet</h1>
 
 
-<ul>
   @foreach (Pet pet in Model)
   {
-    <li>Id: @pet.Id</li>
-    <li><a href="/play/@pet.Id">@pet.Name</a></li>
+    <p>Id: @pet.Id</p>
+    <p><a href="/play/@pet.Id">@pet.Name</a></p>
   }
-</ul>
 
 <form action="/play" method="post">
   <label for="name">Adopt a new pet. Give it a name:</label>

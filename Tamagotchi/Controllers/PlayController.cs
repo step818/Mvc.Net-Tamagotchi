@@ -53,5 +53,12 @@ namespace Tamagotchi.Controllers
       thisPet.Kickball();
       return RedirectToAction("Show");
     }
+    [HttpPost("/play/time")]
+    public ActionResult UpdateTime()
+    {
+      // Pet thisPet = Pet.Find(id);
+      Pet.Time();
+      return RedirectToAction("Show");
+    }
   }
 }
