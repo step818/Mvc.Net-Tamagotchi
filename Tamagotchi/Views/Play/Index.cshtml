@@ -6,21 +6,10 @@
 <ul>
   @foreach (Pet pet in Model)
   {
-    <li>@pet.Id</li>
+    <li>Id: @pet.Id</li>
     <li><a href="/play/@pet.Id">@pet.Name</a></li>
-    <li>@pet.Hungry</li>
   }
 </ul>
-
-
-
-<form action="/play" method="post">
-  <button type="submit">Bedtime</button>
-</form>
-
-<form action="/play" method="post">
-  <button type="submit">Kickball</button>
-</form>
 
 <form action="/play" method="post">
   <label for="name">Adopt a new pet. Give it a name:</label>

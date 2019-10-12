@@ -46,11 +46,27 @@ namespace Tamagotchi.Models
     }
     public int Bedtime()
     {
-      return Tired-1;
+      if(Tired < 100)
+      {
+        Tired = Tired + 1;
+        return Tired;
+      }
+      else
+      {
+        return 0;
+      }
     }
     public int Kickball()
     {
-      return Bored-1;
+      if(Bored < 100)
+      {
+        Bored = Bored + 1;
+        return Bored;
+      }
+      else
+      {
+        return 0;
+      }
     }
     public bool isDead()
     {

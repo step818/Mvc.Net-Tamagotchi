@@ -1,7 +1,19 @@
 <h1>@Model.Name</h1>
 
 <p>@Model.Hungry</p>
+<p>@Model.Tired</p>
+<p>@Model.Bored</p>
 
 <form action="/play/@Model.Id/feed" method="post">
   <button type="submit">Feed</button>
 </form>
+
+<form action="/play/@Model.Id/bedtime" method="post">
+  <button type="submit">Bedtime</button>
+</form>
+
+<form action="/play/@Model.Id/kickball" method="post">
+  <button type="submit">Play kickball</button>
+</form>
+
+<a href="/play">Go Back to Pets</a>

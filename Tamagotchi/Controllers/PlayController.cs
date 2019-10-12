@@ -33,10 +33,24 @@ namespace Tamagotchi.Controllers
       return View(foundPet);
     }
     [HttpPost("/play/{id}/feed")]
-    public ActionResult Update(int Id)
+    public ActionResult UpdateFood(int id)
     {
-      Pet thisPet = Pet.Find(Id);
+      Pet thisPet = Pet.Find(id);
       thisPet.Feed();
+      return RedirectToAction("Show");
+    }
+    [HttpPost("/play/{id}/bedtime")]
+    public ActionResult UpdateSleep(int id)
+    {
+      Pet thisPet = Pet.Find(id);
+      thisPet.Bedtime();
+      return RedirectToAction("Show");
+    }
+    [HttpPost("/play/{id}/kickball")]
+    public ActionResult UpdatePlay(int id)
+    {
+      Pet thisPet = Pet.Find(id);
+      thisPet.Kickball();
       return RedirectToAction("Show");
     }
   }
