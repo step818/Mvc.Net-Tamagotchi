@@ -25,7 +25,7 @@ namespace Tamagotchi.Models
       if (_timer == null)
       {
         // Create a timer and set a 5 second interval
-        _timer = new Timer(5000);
+        _timer = new Timer(1000);
         // Hook up the Elapsed event for the timer
         _timer.Elapsed += OnTimedEvent;
         // Have the timer fire repeated events (true is the default)
@@ -37,7 +37,7 @@ namespace Tamagotchi.Models
     private static void OnTimedEvent(Object source, ElapsedEventArgs e)
     {
       Console.WriteLine("The Elapsed event was raised at {0} poopy butt", e.SignalTime);
-      
+
       Time();
     }
     public static void Time()
@@ -47,16 +47,8 @@ namespace Tamagotchi.Models
         pet.Hungry = pet.Hungry + 1;
         pet.Tired = pet.Tired + 1;
         pet.Bored = pet.Bored + 1;
-        // if(pet.Hungry >= 50)
-        // {
-        //   Console.WriteLine("Your tamagotchi is starving");
-        // }
       }
-      
-      //every 5 seconds, gain a point
-      // if any point = 100, isDead returns true
     }
-
     public static List<Pet> GetAll()
     {
       return _instances;
@@ -71,9 +63,9 @@ namespace Tamagotchi.Models
     }
     public int Feed()
     {
-      if(Hungry != 100)
+      if(Hungry < 20)
       {
-        Hungry = Hungry + 1;
+        Hungry = Hungry - 5;
         return Hungry;
       }
       else
@@ -83,9 +75,9 @@ namespace Tamagotchi.Models
     }
     public int Bedtime()
     {
-      if(Tired < 100)
+      if(Tired < 20)
       {
-        Tired = Tired + 1;
+        Tired = Tired - 5;
         return Tired;
       }
       else
@@ -95,26 +87,60 @@ namespace Tamagotchi.Models
     }
     public int Kickball()
     {
-      if(Bored < 100)
+      if(Bored < 20)
       {
-        Bored = Bored + 1;
+        Bored = Bored - 5;
         return Bored;
       }
       else
       {
         return 0;
-      }    }
+      }    
+    }
+    public bool isStarving()
+    {
+      if(Hungry > 7 && Hungry < 20)
+      {
+          return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+    public bool isExhausted()
+    {
+      if(Tired > 7 && Tired < 20)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+    public bool isDepressed()
+    {
+      if(Bored > 7 && Bored < 20)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
     public bool isDead()
     {
-      if(Hungry > 100)
+      if(Hungry > 20)
       {
         return true;
       }
-      else if(Tired == 100)
+      else if(Tired == 20)
       {
         return true;
       }
-      else if(Bored == 100)
+      else if(Bored == 20)
       {
         return true;
       }

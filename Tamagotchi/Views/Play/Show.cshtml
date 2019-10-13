@@ -4,15 +4,33 @@
 <p>@Model.Tired</p>
 <p>@Model.Bored</p>
 
-@if(@Model.Hungry > 50 && @Model.Hungry < 100)
-{
-  <p>@Model.Name is very hungry</p>
-}
-
 @if(@Model.isDead())
 {
   <h2>@Model.Name has died</h2> 
-
+}
+@if(@Model.isStarving() && !@Model.isDead())
+{
+  <h3>@Model.Name is starving</h3>
+}
+else if(!@Model.isStarving() && !@Model.isDead())
+{
+  <p> </p>
+}
+@if(@Model.isExhausted() && !@Model.isDead())
+{
+  <h3>@Model.Name is exhausted</h3>
+}
+else if(!@Model.isExhausted() && !@Model.isDead())
+{
+  <p> </p>
+}
+@if(@Model.isDepressed() && !@Model.isDead())
+{
+  <h3>@Model.Name is depressed</h3>
+}
+else if(!@Model.isDepressed() && !@Model.isDead())
+{
+  <p> </p>
 }
 
 @DateTime.Now.ToString("HH:mm:ss")
