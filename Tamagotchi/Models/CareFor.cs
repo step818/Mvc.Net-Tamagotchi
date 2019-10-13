@@ -37,8 +37,26 @@ namespace Tamagotchi.Models
     private static void OnTimedEvent(Object source, ElapsedEventArgs e)
     {
       Console.WriteLine("The Elapsed event was raised at {0} poopy butt", e.SignalTime);
+      
       Time();
     }
+    public static void Time()
+    {
+      foreach(Pet pet in _instances)
+      {
+        pet.Hungry = pet.Hungry + 1;
+        pet.Tired = pet.Tired + 1;
+        pet.Bored = pet.Bored + 1;
+        // if(pet.Hungry >= 50)
+        // {
+        //   Console.WriteLine("Your tamagotchi is starving");
+        // }
+      }
+      
+      //every 5 seconds, gain a point
+      // if any point = 100, isDead returns true
+    }
+
     public static List<Pet> GetAll()
     {
       return _instances;
@@ -85,22 +103,10 @@ namespace Tamagotchi.Models
       else
       {
         return 0;
-      }
-    }
-    public static void Time()
-    {
-      foreach(Pet pet in _instances)
-      {
-        pet.Hungry = pet.Hungry + 1;
-        pet.Tired = pet.Tired + 1;
-        pet.Bored = pet.Bored + 1;
-      }
-      //every 5 seconds, gain a point
-      // if any point = 100, isDead returns true
-    }
+      }    }
     public bool isDead()
     {
-      if(Hungry == 100)
+      if(Hungry > 100)
       {
         return true;
       }

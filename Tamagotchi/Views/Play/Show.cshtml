@@ -4,11 +4,18 @@
 <p>@Model.Tired</p>
 <p>@Model.Bored</p>
 
+@if(@Model.Hungry > 50 && @Model.Hungry < 100)
+{
+  <p>@Model.Name is very hungry</p>
+}
+
 @if(@Model.isDead())
 {
   <h2>@Model.Name has died</h2> 
 
 }
+
+@DateTime.Now.ToString("HH:mm:ss")
 
 <form action="/play/@Model.Id/feed" method="post">
   <button type="submit">Feed</button>
