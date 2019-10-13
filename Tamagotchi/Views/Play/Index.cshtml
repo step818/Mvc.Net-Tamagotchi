@@ -1,20 +1,25 @@
 @using Tamagotchi.Models;
+@using System.Threading;
+@{
+  Layout = "_Layout";
+}
+<div class="container">
+  <h1>Your pet</h1>
 
-<h1>Your pet</h1>
 
+    @foreach (Pet pet in Model)
+    {
+      <p>Id: @pet.Id</p>
+      <p><a href="/play/@pet.Id">@pet.Name</a></p>
+    }
 
-  @foreach (Pet pet in Model)
-  {
-    <p>Id: @pet.Id</p>
-    <p><a href="/play/@pet.Id">@pet.Name</a></p>
-  }
+  <form action="/play" method="post">
+    <label for="name">Adopt a new pet. Give it a name:</label>
+    <input id="name" name="name" type="text">
+    <button type="submit">Adopt</button>
+  </form>
 
-<form action="/play" method="post">
-  <label for="name">Adopt a new pet. Give it a name:</label>
-  <input id="name" name="name" type="text">
-  <button type="submit">Adopt</button>
-</form>
-
-<form action="/play/delete" method="post">
-  <button type="submit">Clear All</button>
-</form>
+  <form action="/play/delete" method="post">
+    <button type="submit">Clear All</button>
+  </form>
+</div>
