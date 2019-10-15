@@ -1,51 +1,72 @@
-<h1>@Model.Name</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>@Model.Name</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+  </head>
+  <body>
+    <h1>@Model.Name</h1>
 
-<p>@Model.Hungry</p>
-<p>@Model.Tired</p>
-<p>@Model.Bored</p>
+    <p> @Model.Hungry / 20 hunger level</p>
+    <p> @Model.Tired / 20 sleep level</p>
+    <p> @Model.Bored / 20 loneliness level</p>
 
-@if(@Model.isDead())
-{
-  <h2>@Model.Name has died</h2> 
-}
-@if(@Model.isStarving() && !@Model.isDead())
-{
-  <h3>@Model.Name is starving</h3>
-}
-else if(!@Model.isStarving() && !@Model.isDead())
-{
-  <p> </p>
-}
-@if(@Model.isExhausted() && !@Model.isDead())
-{
-  <h3>@Model.Name is exhausted</h3>
-}
-else if(!@Model.isExhausted() && !@Model.isDead())
-{
-  <p> </p>
-}
-@if(@Model.isDepressed() && !@Model.isDead())
-{
-  <h3>@Model.Name is depressed</h3>
-}
-else if(!@Model.isDepressed() && !@Model.isDead())
-{
-  <p> </p>
-}
+    <p>If any level reaches 20, @Model.Name will DIE!!!!!!!!!</p>
 
-@DateTime.Now.ToString("HH:mm:ss")
+    <form action="/play/@Model.Id/feed" method="post">
+      <button type="submit">Feed</button>
+    </form>
 
-<form action="/play/@Model.Id/feed" method="post">
-  <button type="submit">Feed</button>
-</form>
+    <form action="/play/@Model.Id/bedtime" method="post">
+      <button type="submit">Bedtime</button>
+    </form>
 
-<form action="/play/@Model.Id/bedtime" method="post">
-  <button type="submit">Bedtime</button>
-</form>
+    <form action="/play/@Model.Id/kickball" method="post">
+      <button type="submit">Play kickball</button>
+    </form>
 
-<form action="/play/@Model.Id/kickball" method="post">
-  <button type="submit">Play kickball</button>
-</form>
+    <!-- Display pictures of health and happiness -->
+    @if(!@Model.isStarving() && !@Model.isExhausted() && !@Model.isDepressed())
+    {
+      <img src='~/img/happyYoshi.png'/>
+    }
 
+    @if(@Model.isDead())
+    {
+      <h2>@Model.Name has died</h2> 
+      <img src='~/img/deadYoshi.jpg' />
+    }
+    @if(@Model.isStarving() && !@Model.isDead())
+    {
+      <h3>@Model.Name is starving</h3>
+      <img src='~/img/hungryDragon.jpg'/>
+    }
+    else if(!@Model.isStarving() && !@Model.isDead())
+    {
+      <p> </p>
+    }
+    @if(@Model.isExhausted() && !@Model.isDead())
+    {
+      <h3>@Model.Name is exhausted</h3>
+      <img src='~/img/tiredYoshi.png' />
+    }
+    else if(!@Model.isExhausted() && !@Model.isDead())
+    {
+      <p> </p>
+    }
+    @if(@Model.isDepressed() && !@Model.isDead())
+    {
+      <h3>@Model.Name is depressed</h3>
+      <img src='~/img/lonelyYoshi.gif'/>
+    }
+    else if(!@Model.isDepressed() && !@Model.isDead())
+    {
+      <p> </p>
+    }
 
-<a href="/play">Go Back to Pets</a>
+    @DateTime.Now.ToString("HH:mm:ss")
+
+    
+    <a href="/play">Go Back to Pets</a>
+  </body>
+</html>

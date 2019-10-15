@@ -13,7 +13,6 @@ namespace Tamagotchi.Controllers
       List<Pet> allPets = Pet.GetAll();
       return View(allPets);
     }
-    
     [HttpPost("/play")]
     public ActionResult Create(string name)
     {

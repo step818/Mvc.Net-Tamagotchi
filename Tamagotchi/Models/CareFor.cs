@@ -65,8 +65,15 @@ namespace Tamagotchi.Models
     {
       if(Hungry < 20)
       {
-        Hungry = Hungry - 5;
-        return Hungry;
+        if(Hungry <= 4)
+        {
+          return 0;
+        }
+        else
+        {
+          Hungry = Hungry - 5;
+          return Hungry;
+        }
       }
       else
       {
@@ -77,8 +84,15 @@ namespace Tamagotchi.Models
     {
       if(Tired < 20)
       {
-        Tired = Tired - 5;
-        return Tired;
+        if(Tired <= 4)
+        {
+          return 0;
+        }
+        else
+        {
+          Tired = Tired - 5;
+          return Tired;
+        }
       }
       else
       {
@@ -89,13 +103,20 @@ namespace Tamagotchi.Models
     {
       if(Bored < 20)
       {
-        Bored = Bored - 5;
-        return Bored;
+        if(Bored <= 4)
+        {
+          return 0;
+        }
+        else
+        {
+          Bored = Bored - 5;
+          return Bored;
+        }
       }
       else
       {
         return 0;
-      }    
+      }   
     }
     public bool isStarving()
     {
@@ -132,15 +153,15 @@ namespace Tamagotchi.Models
     }
     public bool isDead()
     {
-      if(Hungry > 20)
+      if(Hungry >= 20)
       {
         return true;
       }
-      else if(Tired == 20)
+      else if(Tired >= 20)
       {
         return true;
       }
-      else if(Bored == 20)
+      else if(Bored >= 20)
       {
         return true;
       }

@@ -3,23 +3,31 @@
 @{
   Layout = "_Layout";
 }
-<div class="container">
-  <h1>Your pet</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css">
+    <title>Index</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Your pet</h1>
+        @foreach (Pet pet in Model)
+        {
+          <p>Id: @pet.Id</p>
+          <p><a href="/play/@pet.Id">@pet.Name</a></p>
+        }
 
+      <form action="/play" method="post">
+        <label for="name">Adopt a new pet. Give it a name:</label>
+        <input id="name" name="name" type="text">
+        <button type="submit">Adopt</button>
+      </form>
 
-    @foreach (Pet pet in Model)
-    {
-      <p>Id: @pet.Id</p>
-      <p><a href="/play/@pet.Id">@pet.Name</a></p>
-    }
-
-  <form action="/play" method="post">
-    <label for="name">Adopt a new pet. Give it a name:</label>
-    <input id="name" name="name" type="text">
-    <button type="submit">Adopt</button>
-  </form>
-
-  <form action="/play/delete" method="post">
-    <button type="submit">Clear All</button>
-  </form>
-</div>
+      <form action="/play/delete" method="post">
+        <button type="submit">Clear All</button>
+      </form>
+    </div>
+  </body>
+</html>
