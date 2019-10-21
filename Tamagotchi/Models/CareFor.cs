@@ -36,7 +36,7 @@ namespace Tamagotchi.Models
     }
     private static void OnTimedEvent(Object source, ElapsedEventArgs e)
     {
-      Console.WriteLine("The Elapsed event was raised at {0} poopy butt", e.SignalTime);
+      Console.WriteLine("The Elapsed event was raised at {0}", e.SignalTime);
 
       Time();
     }

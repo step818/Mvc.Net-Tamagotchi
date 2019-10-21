@@ -7,9 +7,9 @@
   <body>
     <h1>@Model.Name</h1>
 
-    <p> @Model.Hungry / 20 hunger level</p>
+    <!-- <p> @Model.Hungry / 20 hunger level</p>
     <p> @Model.Tired / 20 sleep level</p>
-    <p> @Model.Bored / 20 loneliness level</p>
+    <p> @Model.Bored / 20 loneliness level</p> -->
 
     <p>If any level reaches 20, @Model.Name will DIE!!!!!!!!!</p>
 
@@ -26,7 +26,7 @@
     </form>
 
     <!-- Display pictures of health and happiness -->
-    @if(!@Model.isStarving() && !@Model.isExhausted() && !@Model.isDepressed())
+    @if(!@Model.isStarving() && !@Model.isExhausted() && !@Model.isDepressed() && !Model.isDead())
     {
       <img src='~/img/happyYoshi.png'/>
     }
